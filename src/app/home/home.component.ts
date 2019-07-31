@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiConfigService } from '../services/api-config.service';
-import { Address } from '../model/Address'
 
 @Component({
   selector: 'app-home',

@@ -1,10 +1,9 @@
 <form action="">
-
   <div class="form-group form-inline">
     Wyszukaj: <input class="form-control ml-2" type="text" name="search" [(ngModel)]="search"
       (ngModelChange)="searchAddress()">
   </div>
-  <ng-container *ngIf="addresses;else not_found">
+  <ng-container *ngIf="addresses.data;else not_found">
     <table class="table table-striped center">
       <thead>
         <tr>

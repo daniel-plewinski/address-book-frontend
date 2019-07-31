@@ -1,12 +1,23 @@
 <form>
   <div class="form-group">
     <label for="surname">Nazwisko</label>
-    <input type="text" class="form-control" id="surname" aria-describedby="surname"
+    <input type="text" [(ngModel)]="address.surname" name="surname" class="form-control" id="surname" aria-describedby="surname"
       placeholder="Wpisz nazwisko">
   </div>
   <div class="form-group">
     <label for="phone">Telefon</label>
-    <input type="text" class="form-control" id="phone" placeholder="Wpisz telefon">
+    <input type="text" [(ngModel)]="address.phone" name="phone" class="form-control" id="phone" placeholder="Wpisz telefon">
   </div>
-  <button type="submit" class="btn btn-primary">Dodaj</button>
+  <button type="submit" (click)="newAddress()" class="btn btn-primary">Dodaj</button>
 </form>
+
+<ngb-toast
+  *ngIf="showSuccess"
+  [autohide]="true"
+  header="Sukces"
+  [delay]="3000"
+  (mouseenter)="autohide = false"
+  (mouseleave)="autohide = true"
+  (hide)="showSuccess = false; autohide = true">
+  Adres został dodany
+</ngb-toast>

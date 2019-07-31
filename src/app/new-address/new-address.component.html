@@ -1,23 +1,39 @@
-<form>
+<form #newAddress="ngForm">
   <div class="form-group">
     <label for="surname">Nazwisko</label>
-    <input type="text" [(ngModel)]="address.surname" name="surname" class="form-control" id="surname" aria-describedby="surname"
-      placeholder="Wpisz nazwisko">
+    <input type="text" [(ngModel)]="address.surname" name="surname" class="form-control" id="surname"
+      aria-describedby="surname" placeholder="Wpisz nazwisko" required pattern="^[ a-zA-ZżółćęśąźńŻÓŁĆĘŚĄŹŃ]*$"
+      #surname="ngModel">
+    <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert alert-danger">
+      <div *ngIf="surname.errors.required">
+        Nazwisko nie może byc puste
+      </div>
+      <div *ngIf="surname.errors.pattern">
+        Nazwisko może zawierać tylko litery oraz znak "-"
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="phone">Telefon</label>
-    <input type="text" [(ngModel)]="address.phone" name="phone" class="form-control" id="phone" placeholder="Wpisz telefon">
+    <input type="text" [(ngModel)]="address.phone" name="phone" class="form-control" id="phone"
+      placeholder="Wpisz telefon" required pattern="^[ 0-9+]*$" minlength="6" #phone="ngModel">
+    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+      <div *ngIf="phone.errors.required">
+        Telefon nie może być pusty
+      </div>
+      <div *ngIf="phone.errors.pattern">
+        Telefon może zawierać tylko cyfry, znak "+" i spacje
+      </div>
+      <div *ngIf="phone.errors.minlength">
+        Telefon jest za krótki
+      </div>
+    </div>
   </div>
-  <button type="submit" (click)="newAddress()" class="btn btn-primary">Dodaj</button>
+  <button type="submit" [disabled]="!newAddress.form.valid" (click)="newAddress()"
+    class="btn btn-primary">Dodaj</button>
 </form>
 
-<ngb-toast
-  *ngIf="showSuccess"
-  [autohide]="true"
-  header="Sukces"
-  [delay]="3000"
-  (mouseenter)="autohide = false"
-  (mouseleave)="autohide = true"
-  (hide)="showSuccess = false; autohide = true">
+<ngb-toast *ngIf="showSuccess" [autohide]="true" header="Sukces" [delay]="3000" (mouseenter)="autohide = false"
+  (mouseleave)="autohide = true" (hide)="showSuccess = false; autohide = true">
   Adres został dodany
 </ngb-toast>

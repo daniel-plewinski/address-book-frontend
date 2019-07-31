@@ -1,0 +1,32 @@
+<form action="">
+
+  <div class="form-group form-inline">
+    Wyszukaj: <input class="form-control ml-2" type="text" name="search" [(ngModel)]="search"
+      (ngModelChange)="searchAddress()">
+  </div>
+  <ng-container *ngIf="addresses;else not_found">
+    <table class="table table-striped center">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nazwisko</th>
+          <th scope="col">Telefon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let address of addresses.data.data; index as i">
+          <th scope="row">{{ address.id }}</th>
+          <td>{{ address.surname }}
+          </td>
+          <td>{{ address.phone }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2 mb-5">
+      <button class="btn btn-primary" [disabled]="page===1" (click)="previousPage($event)">Poprzednia strona</button>
+      {{page}} z {{addresses.data.last_page}}
+      <button class="btn btn-primary" [disabled]="page>=addresses.data.last_page" (click)="nextPage($event)">Następna strona</button>
+    </div>
+  </ng-container>
+  <ng-template #not_found>Brak wyników</ng-template>
+</form>

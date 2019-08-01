@@ -21,8 +21,8 @@ export class NewAddressComponent implements OnInit {
     this.apiConfigService.newAddress(this.address).subscribe(
       data => {
         this.showSuccess = true;
-        this.address.surname = "";
-        this.address.phone = "";
+        this.address.surname = '';
+        this.address.phone = '';
       },
       error => {
         console.log(error.error.message);

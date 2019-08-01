@@ -1,4 +1,4 @@
-<form #newAddress="ngForm">
+<form #newAddressForm="ngForm">
   <div class="form-group">
     <label for="surname">Nazwisko</label>
     <input type="text" [(ngModel)]="address.surname" name="surname" class="form-control" id="surname"
@@ -29,10 +29,10 @@
       </div>
     </div>
   </div>
-  <button type="submit" [disabled]="!newAddress.form.valid" (click)="newAddress()"
+  <button type="submit" [disabled]="!newAddressForm.form.valid" (click)="newAddress(); newAddressForm.form.reset()"
     class="btn btn-primary">Dodaj</button>
 </form>
-<ngb-toast *ngIf="showSuccess" [autohide]="true" header="Sukces" [delay]="3000" (mouseenter)="autohide = false"
-  (mouseleave)="autohide = true" (hide)="showSuccess = false; autohide = true">
+<ngb-toast *ngIf="showSuccess" [autohide]="true" header="Sukces" [delay]="3000" (mouseenter)="autohide=false"
+  (mouseleave)="autohide=true" (hide)="showSuccess = false; autohide = true">
   Adres został dodany
 </ngb-toast>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {apiUrl} from './apiUrl'
+import {apiUrl} from './apiUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class ApiConfigService {
   }
 
   newAddress(data: any) {
-    return this.http.post(`{apiUrl}/api/addresses`, data)
+
+    return this.http.post(`${apiUrl}/api/addresses`, data)
       .map((response: Response) => {
         return response;
       });

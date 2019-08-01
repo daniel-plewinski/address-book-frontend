@@ -34,15 +34,19 @@ export class HomeComponent implements OnInit {
 
   searchAddress() {
     this.page = 1;
-    setTimeout(() => this.getAddresses(), 200);
+    this.getAddresses();
+  }
+
+  clearSearch() {
+    if (!this.search) {
+      this.getAddresses();
+    }
   }
 
   getAddresses() {
     this.apiConfigService.getAddresses(this.page, this.search).subscribe(
       data => {
         this.addresses = data;
-        console.log(this.addresses);
-        // console.log(data);
       },
       error => { }
     );

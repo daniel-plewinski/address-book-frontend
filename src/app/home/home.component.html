@@ -1,9 +1,11 @@
 <form action="">
   <div class="form-group form-inline">
-    Wyszukaj: <input class="form-control ml-2" type="text" name="search" [(ngModel)]="search"
-      (ngModelChange)="searchAddress()">
+    <input class="form-control ml-2" type="text" name="search" [(ngModel)]="search"
+     (ngModelChange)="clearSearch()" >
+      <button type="submit" (click)="searchAddress()"
+      class="btn btn-secondary ml-2" [disabled]="!search">Znajdź</button>
   </div>
-  <ng-container *ngIf="addresses.data;else not_found">
+  <ng-container *ngIf="addresses?.data;else not_found">
     <table class="table table-striped center">
       <thead>
         <tr>
@@ -24,7 +26,8 @@
     <div class="d-flex justify-content-between p-2 mb-5">
       <button class="btn btn-primary" [disabled]="page===1" (click)="previousPage($event)">Poprzednia strona</button>
       {{page}} z {{addresses.data.last_page}}
-      <button class="btn btn-primary" [disabled]="page>=addresses.data.last_page" (click)="nextPage($event)">Następna strona</button>
+      <button class="btn btn-primary" [disabled]="page>=addresses.data.last_page" (click)="nextPage($event)">Następna
+        strona</button>
     </div>
   </ng-container>
   <ng-template #not_found>Brak wyników</ng-template>

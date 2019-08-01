@@ -32,7 +32,6 @@
   <button type="submit" [disabled]="!newAddress.form.valid" (click)="newAddress()"
     class="btn btn-primary">Dodaj</button>
 </form>
-
 <ngb-toast *ngIf="showSuccess" [autohide]="true" header="Sukces" [delay]="3000" (mouseenter)="autohide = false"
   (mouseleave)="autohide = true" (hide)="showSuccess = false; autohide = true">
   Adres został dodany

@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/.cache
+/.config
+/.npm
+.ash_history

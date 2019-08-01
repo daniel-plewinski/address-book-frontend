@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { NewAddressComponent } from './new-address.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NewAddressComponent', () => {
   let component: NewAddressComponent;
@@ -8,7 +10,11 @@ describe('NewAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewAddressComponent ]
+      declarations: [ NewAddressComponent ],
+      imports: [ 
+        FormsModule,
+        NgbModule,
+        HttpClientModule ]
     })
     .compileComponents();
   }));

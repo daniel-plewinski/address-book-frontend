@@ -24,7 +24,7 @@ export class NewAddressComponent implements OnInit {
         this.address.surname = "";
         this.address.phone = "";
       },
-      error => { 
+      error => {
         console.log(error.error.message);
       }
     );

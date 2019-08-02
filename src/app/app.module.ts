@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NewAddressComponent } from './new-address/new-address.component';
 
 import { ApiConfigService } from './services/api-config.service';
+import { AddressesComponent } from './addresses/addresses.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ApiConfigService } from './services/api-config.service';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    NewAddressComponent
+    NewAddressComponent,
+    AddressesComponent
   ],
   imports: [
     BrowserModule,

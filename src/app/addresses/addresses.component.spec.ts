@@ -1,28 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { NewAddressComponent } from './new-address.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { AddressesComponent } from './addresses.component';
+import { ApiConfigService } from '../services/api-config.service';
 
-describe('NewAddressComponent', () => {
-  let component: NewAddressComponent;
-  let fixture: ComponentFixture<NewAddressComponent>;
+describe('AddressesComponent', () => {
+  let component: AddressesComponent;
+  let fixture: ComponentFixture<AddressesComponent>;
+  let service: ApiConfigService;
 
   beforeEach(async(() => {
+
+    service = new ApiConfigService(null);
+    component = new AddressesComponent(service);
+
     TestBed.configureTestingModule({
-      declarations: [ NewAddressComponent ],
-      imports: [
-        FormsModule,
-        NgbModule,
-        HttpClientModule ]
+      declarations: [ AddressesComponent ],
+      imports: [HttpClientModule, FormsModule]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewAddressComponent);
+    fixture = TestBed.createComponent(AddressesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -30,6 +32,7 @@ describe('NewAddressComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 
   it('should have a form element', () => {
     const formElement: DebugElement = fixture.debugElement;

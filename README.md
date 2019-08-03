@@ -2,7 +2,7 @@
 This is a basic Angular 8 app with HttpClient, Routing and basic Jasmnine Unit Tests 
 
 ## Configuration and running
-This app requires a backend app which can be found in the repo "Address Book Backend". Both apps can be run in the provided docker images.
+This app requires a backend app which can be found in the repo "Address Book API". Both apps can be run in the provided docker images.
 
 ### Provide your backend url
 After starting the backend up in a Docker container set the right url in the "apiUrl.ts" file in the project root directory.
